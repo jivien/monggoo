@@ -10,27 +10,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            transition: background-color 0.5s ease-in-out;
-        }
+        body { font-family: 'Inter', sans-serif; transition: background-color 0.5s ease-in-out; }
         .orbitron { font-family: 'Orbitron', sans-serif; }
         .hidden-view { display: none !important; }
-
-        /* --- Cinematic Landing Page Styles --- */
-        #landing-page { 
-            background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop'); 
-            background-size: cover; 
-            background-position: center; 
-            transition: background-image 0.5s ease-in-out;
-        }
+        #landing-page { background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center; transition: background-image 0.5s ease-in-out; }
         .landing-overlay { background-color: rgba(10, 10, 10, 0.7); backdrop-filter: blur(4px); }
         .fade-in-up { animation: fadeInUp 1s ease-out forwards; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .input-tech { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2); transition: border-color 0.3s, box-shadow 0.3s; }
         .input-tech:focus { border-color: #4f46e5; box-shadow: 0 0 15px rgba(79, 70, 229, 0.5); }
-
-        /* --- Catalog & Product Styles --- */
         .product-card { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .product-card.is-visible { opacity: 1; transform: translateY(0); }
         .card-carousel-container { position: relative; }
@@ -40,12 +28,12 @@
         .card-carousel-container:hover .carousel-btn { opacity: 1; }
         .carousel-btn.left { left: 8px; }
         .carousel-btn.right { right: 8px; }
-        
-        /* Modal and Video Styles */
         .modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
         .modal.hidden { visibility: hidden; opacity: 0; }
         .video-responsive { overflow: hidden; padding-bottom: 56.25%; position: relative; height: 0; }
         .video-responsive iframe { left: 0; top: 0; height: 100%; width: 100%; position: absolute; }
+        .chat-bubble-user { background-color: #4f46e5; color: white; }
+        .chat-bubble-admin { background-color: #e5e7eb; color: #1f2937; }
     </style>
 </head>
 <body>
@@ -54,12 +42,12 @@
     <!-- =========      BAGIAN PENGGUNA      ========= -->
     <!-- ============================================= -->
     <div id="user-app" class="hidden">
-        <!-- HALAMAN BERANDA (LOGIN PENGGUNA BIASA) -->
+        <!-- HALAMAN BERANDA -->
         <section id="landing-page" class="h-screen w-screen fixed top-0 left-0 flex items-center justify-center">
             <div class="landing-overlay absolute inset-0"></div>
             <div class="relative z-10 text-center p-4 max-w-lg">
                 <h1 class="orbitron text-5xl md:text-6xl font-bold text-white tracking-wider fade-in-up" style="animation-delay: 0.1s;">Monggo</h1>
-                <p class="mt-4 text-lg md:text-xl text-gray-300 fade-in-up" style="animation-delay: 0.3s;">Temukan gayamu di alam bebas di sini</p>
+                <p class="mt-4 text-lg md:text-xl text-gray-300 fade-in-up" style="animation-delay: 0.3s;">Temukan gayamu di alam bebas.</p>
                 <form id="login-form" class="mt-8 fade-in-up" style="animation-delay: 0.5s;">
                     <input type="text" id="login-name" placeholder="Masukkan nama Anda..." class="input-tech w-full px-4 py-3 rounded-md text-center text-white placeholder-gray-400 focus:outline-none" required>
                     <button type="submit" class="mt-4 w-full bg-indigo-600 text-white font-bold py-3 px-4 rounded-md hover:bg-indigo-500 hover:shadow-lg hover:shadow-indigo-500/50 transition-all duration-300">Jelajahi Katalog</button>
@@ -70,58 +58,72 @@
         <!-- HALAMAN KATALOG PRODUK -->
         <section id="catalog-page" class="hidden bg-slate-100 text-slate-800">
             <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-40"><div class="container mx-auto px-6 py-4 flex justify-between items-center"><h1 class="orbitron text-3xl font-bold text-indigo-600">Monggo</h1><div id="auth-section"><div id="user-info" class="flex items-center space-x-4"><span id="welcome-message" class="text-slate-700 font-medium"></span><button id="logout-btn" class="text-sm text-red-500 hover:underline">Logout</button></div></div></div></header>
-            <main class="container mx-auto px-6 py-10"><div class="mb-10 max-w-2xl mx-auto"><div class="relative"><div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none"><svg class="h-5 w-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg></div><input type="search" id="search-bar" placeholder="Cari Sesukamu disini..." class="block w-full pl-12 pr-4 py-3 border border-slate-300 rounded-full bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg shadow-sm"></div></div><div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div><p id="no-results" class="text-center text-slate-500 text-lg hidden mt-8">Yah, produk yang kamu cari tidak ditemukan.</p></main>
-            <footer class="bg-white mt-12 py-6 border-t border-slate-200"><div class="container mx-auto px-6 text-center text-slate-500 text-sm"><p>&copy; 2025 Monggo | © J I S A E S H I N.</p></div></footer>
-            <a href="#admin" id="admin-icon-link" title="Admin Panel" class="fixed bottom-6 right-6 bg-slate-800 text-white p-3 rounded-full shadow-lg hover:bg-indigo-600 transition-all duration-300 transform hover:scale-110 z-50">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-            </a>
+            <main class="container mx-auto px-6 py-10"><div class="mb-10 max-w-2xl mx-auto"><div class="relative"><div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none"><svg class="h-5 w-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg></div><input type="search" id="search-bar" placeholder="Cari kemeja, sepatu, dll..." class="block w-full pl-12 pr-4 py-3 border border-slate-300 rounded-full bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg shadow-sm"></div></div><div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div><p id="no-results" class="text-center text-slate-500 text-lg hidden mt-8">Yah, produk yang kamu cari tidak ditemukan.</p></main>
+            <footer class="bg-white mt-12 py-6 border-t border-slate-200"><div class="container mx-auto px-6 text-center text-slate-500 text-sm"><p>&copy; 2024 Monggo. All Rights Reserved.</p></div></footer>
+            <!-- Tombol Ikon Admin & Chat -->
+            <div class="fixed bottom-6 right-6 space-y-4 z-50">
+                <a href="#admin" id="admin-icon-link" title="Admin Panel" class="block bg-slate-800 text-white p-3 rounded-full shadow-lg hover:bg-slate-900 transition-all duration-300 transform hover:scale-110"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg></a>
+                <button id="chat-icon" title="Chat dengan Admin" class="relative bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-all duration-300 transform hover:scale-110"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg><span id="chat-notification-dot" class="absolute top-0 right-0 block h-3 w-3 rounded-full bg-red-500 ring-2 ring-white hidden"></span></button>
+            </div>
         </section>
         
         <!-- MODALS PENGGUNA -->
-        <div id="order-modal" class="modal hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4"><div class="bg-white rounded-lg shadow-xl w-full max-w-md p-6 relative"><button class="close-modal-btn absolute top-4 right-4 text-gray-500 hover:text-gray-800"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button><h2 class="text-2xl font-bold mb-4 text-gray-800">Form Konfirmasi Pesanan</h2><div class="mb-4 border-b pb-4"><p class="text-gray-600">Anda akan memesan:</p><h3 id="modal-product-name" class="text-lg font-semibold text-gray-900"></h3><p id="modal-product-price" class="text-gray-700"></p></div><form id="order-form"><input type="hidden" id="product-id-input"><div class="mb-4"><label for="customer-name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label><input type="text" id="customer-name" name="customer-name" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required></div><div class="mb-4"><label for="customer-address" class="block text-sm font-medium text-gray-700 mb-1">Alamat Lengkap</label><textarea id="customer-address" name="customer-address" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required></textarea></div><div class="mb-4"><label for="pesancustomer" class="block text-sm font-medium text-gray-700 mb-1">Catatan (Opsional)</label><textarea id="pesancustomer" name="pesancustomer" rows="2" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" placeholder="Contoh: Ukuran L, warna hitam"></textarea></div><div class="mt-4 p-3 bg-yellow-100 border-l-4 border-yellow-400 text-yellow-700 rounded-md text-sm"><p><span class="font-bold">Info:</span> Semua harga belum termasuk ongkos kirim.</p></div><div class="mt-6"><button type="submit" class="w-full bg-green-500 text-white font-bold py-3 px-4 rounded-md hover:bg-green-600 flex items-center justify-center space-x-2"><span>Kirim Pesanan via WhatsApp</span></button></div></form></div></div>
-        <div id="video-modal" class="modal hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"><div class="bg-black rounded-lg w-full max-w-3xl relative"><button class="close-modal-btn absolute -top-10 right-0 text-white hover:text-gray-300"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button><div id="video-container" class="video-responsive"></div></div></div>
-        <div id="image-detail-modal" class="modal hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"><div class="bg-white p-2 rounded-lg max-w-4xl max-h-[90vh] relative"><button class="close-modal-btn absolute -top-10 right-0 text-white hover:text-gray-300"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button><img id="detail-image-src" src="" alt="Detail Gambar Produk" class="object-contain w-full h-full max-h-[85vh]"></div></div>
+        <div id="order-modal" class="modal hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-[60] p-4"><div class="bg-white rounded-lg shadow-xl w-full max-w-md p-6 relative"><button class="close-modal-btn absolute top-4 right-4 text-gray-500 hover:text-gray-800"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button><h2 class="text-2xl font-bold mb-4 text-gray-800">Form Konfirmasi Pesanan</h2><div class="mb-4 border-b pb-4"><p class="text-gray-600">Anda akan memesan:</p><h3 id="modal-product-name" class="text-lg font-semibold text-gray-900"></h3><p id="modal-product-price" class="text-gray-700"></p></div><form id="order-form"><input type="hidden" id="product-id-input"><div class="mb-4"><label for="customer-name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label><input type="text" id="customer-name" name="customer-name" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required></div><div class="mb-4"><label for="customer-address" class="block text-sm font-medium text-gray-700 mb-1">Alamat Lengkap</label><textarea id="customer-address" name="customer-address" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required></textarea></div><div class="mb-4"><label for="pesancustomer" class="block text-sm font-medium text-gray-700 mb-1">Catatan (Opsional)</label><textarea id="pesancustomer" name="pesancustomer" rows="2" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" placeholder="Contoh: Ukuran L, warna hitam"></textarea></div><div class="mt-4 p-3 bg-yellow-100 border-l-4 border-yellow-400 text-yellow-700 rounded-md text-sm"><p><span class="font-bold">Info:</span> Semua harga belum termasuk ongkos kirim.</p></div><div class="mt-6"><button type="submit" class="w-full bg-green-500 text-white font-bold py-3 px-4 rounded-md hover:bg-green-600 flex items-center justify-center space-x-2"><span>Kirim Pesanan via WhatsApp</span></button></div></form></div></div>
+        <div id="video-modal" class="modal hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[60] p-4"><div class="bg-black rounded-lg w-full max-w-3xl relative"><button class="close-modal-btn absolute -top-10 right-0 text-white hover:text-gray-300"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button><div id="video-container" class="video-responsive"></div></div></div>
+        <div id="image-detail-modal" class="modal hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[60] p-4"><div class="bg-white p-2 rounded-lg max-w-4xl max-h-[90vh] relative"><button class="close-modal-btn absolute -top-10 right-0 text-white hover:text-gray-300"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button><img id="detail-image-src" src="" alt="Detail Gambar Produk" class="object-contain w-full h-full max-h-[85vh]"></div></div>
+        <div id="chat-modal" class="modal hidden fixed inset-0 bg-black bg-opacity-60 flex items-end justify-center z-[70] p-4 md:items-center"><div class="bg-white rounded-lg shadow-xl w-full max-w-lg flex flex-col h-[70vh]"><div class="p-4 border-b flex justify-between items-center"><h2 class="text-xl font-bold text-gray-800">Chat dengan Admin</h2><button class="close-chat-modal text-gray-500 hover:text-gray-800"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button></div><div id="chat-messages-user" class="flex-1 p-4 space-y-4 overflow-y-auto flex flex-col"></div><form id="user-chat-form" class="p-4 border-t flex space-x-2"><input id="user-chat-input" type="text" placeholder="Ketik pesan Anda..." class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required><button type="submit" class="bg-indigo-600 text-white font-bold px-4 py-2 rounded-md hover:bg-indigo-700">Kirim</button></form></div></div>
     </div>
     
     <!-- ============================================= -->
     <!-- =========       BAGIAN ADMIN        ========= -->
     <!-- ============================================= -->
     <div id="admin-app" class="hidden">
-        <div class="bg-slate-100 flex items-center justify-center min-h-screen p-4">
+        <div class="bg-slate-100 min-h-screen">
              <!-- KONTENER LOGIN DENGAN FIREBASE AUTH -->
-            <div id="admin-login-gate" class="w-full max-w-md">
-                <form id="admin-login-form" class="bg-white p-8 rounded-lg shadow-md"><h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Admin Login</h2><div class="space-y-4"><div><label for="admin-email" class="block text-sm font-medium text-slate-700">Email</label><input type="email" id="admin-email" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500" required></div><div><label for="admin-password" class="block text-sm font-medium text-slate-700">Password</label><input type="password" id="admin-password" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500" required></div></div><p id="admin-login-error" class="text-red-500 text-sm text-center mt-4 hidden">Email atau Password salah.</p><div class="mt-6"><button type="submit" id="admin-login-btn" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700">Masuk</button></div></form>
+            <div id="admin-login-gate" class="flex items-center justify-center min-h-screen p-4">
+                <div class="w-full max-w-md"><form id="admin-login-form" class="bg-white p-8 rounded-lg shadow-md"><h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Admin Login</h2><div class="space-y-4"><div><label for="admin-email" class="block text-sm font-medium text-slate-700">Email</label><input type="email" id="admin-email" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" required></div><div><label for="admin-password" class="block text-sm font-medium text-slate-700">Password</label><input type="password" id="admin-password" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" required></div></div><p id="admin-login-error" class="text-red-500 text-sm text-center mt-4 hidden">Email atau Password salah.</p><div class="mt-6"><button type="submit" id="admin-login-btn" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700">Masuk</button></div></form></div>
             </div>
 
-            <!-- KONTENER FORM ADMIN -->
-            <div id="admin-content" class="container mx-auto p-6 max-w-2xl hidden">
-                <div class="flex justify-between items-center mb-6"><h1 class="text-3xl font-bold text-slate-800">Admin Panel</h1><button id="admin-logout-btn" class="text-sm font-medium text-red-500 hover:text-red-700">Logout</button></div>
-                <form id="add-product-form" class="bg-white p-8 rounded-lg shadow-md space-y-6">
-                    <h2 class="text-xl font-semibold border-b pb-3 text-slate-800">Tambah Produk Baru</h2>
-                    <div><label for="name" class="block text-sm font-medium text-slate-700">Nama Produk</label><input type="text" id="name" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" required></div>
-                    <div><label for="price" class="block text-sm font-medium text-slate-700">Harga (Hanya Angka)</label><input type="number" id="price" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" required></div>
-                    <div><label for="description" class="block text-sm font-medium text-slate-700">Deskripsi</label><textarea id="description" rows="4" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" required></textarea></div>
-                    <div><label for="imageUrls" class="block text-sm font-medium text-slate-700">Link URL Gambar (pisahkan dengan koma)</label><textarea id="imageUrls" rows="3" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" placeholder="https://url-gambar1.com, https://url-gambar2.com" required></textarea></div>
-                    <div><label for="videoUrl" class="block text-sm font-medium text-slate-700">URL Video YouTube (Embed)</label><input type="url" id="videoUrl" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" placeholder="https://www.youtube.com/embed/xxxxxx"></div>
-                    <div><label for="shopeeLink" class="block text-sm font-medium text-slate-700">Link Shopee</label><input type="url" id="shopeeLink" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm"></div>
-                    <div class="pt-4"><button type="submit" id="submit-btn" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700">Simpan Produk</button></div>
-                </form>
-
-                <form id="theme-settings-form" class="bg-white p-8 rounded-lg shadow-md space-y-6 mt-8">
-                    <h2 class="text-xl font-semibold border-b pb-3 text-slate-800">Pengaturan Tema</h2>
-                    <div><label for="landing-bg-url" class="block text-sm font-medium text-slate-700">URL Background Landing Page</label><input type="url" id="landing-bg-url" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" placeholder="https://images.unsplash.com/..."></div>
-                    <div><label for="catalog-bg-color" class="block text-sm font-medium text-slate-700">Warna Background Katalog</label><input type="text" id="catalog-bg-color" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" placeholder="#f1f5f9 atau rgb(241, 245, 249)"></div>
-                    <div class="pt-4"><button type="submit" id="theme-submit-btn" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-slate-700 hover:bg-slate-800">Simpan Tema</button></div>
-                </form>
-                <p id="theme-success-message" class="mt-4 text-center text-green-600 font-medium hidden">Tema berhasil disimpan!</p>
+            <!-- KONTENER PANEL ADMIN -->
+            <div id="admin-content" class="hidden">
+                <header class="bg-white shadow-md"><div class="container mx-auto p-4 flex justify-between items-center"><h1 class="text-2xl font-bold text-slate-800">Admin Panel</h1><button id="admin-logout-btn" class="text-sm font-medium text-red-500 hover:text-red-700">Logout</button></div></header>
+                <main class="container mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-1 bg-white p-6 rounded-lg shadow-md self-start">
+                        <h2 class="text-xl font-semibold border-b pb-3 mb-4 text-slate-800">Pesan Pelanggan</h2>
+                        <div id="chat-list-admin" class="space-y-2 max-h-[70vh] overflow-y-auto"></div>
+                    </div>
+                    <div class="lg:col-span-2 space-y-8">
+                        <div id="admin-chat-window" class="bg-white p-6 rounded-lg shadow-md hidden"><h3 id="admin-chat-header" class="text-lg font-semibold text-slate-700 mb-4"></h3><div id="chat-messages-admin" class="h-64 border rounded-md p-3 overflow-y-auto space-y-3 flex flex-col"></div><form id="admin-reply-form" class="mt-4 flex space-x-2"><input id="admin-reply-input" type="text" placeholder="Ketik balasan..." class="w-full px-3 py-2 border border-gray-300 rounded-md" required><button type="submit" class="bg-indigo-600 text-white font-bold px-4 py-2 rounded-md hover:bg-indigo-700">Balas</button></form></div>
+                        <form id="product-form" class="bg-white p-8 rounded-lg shadow-md space-y-6">
+                            <h2 id="form-title" class="text-xl font-semibold border-b pb-3 text-slate-800">Tambah Produk Baru</h2><input type="hidden" id="edit-product-id">
+                            <div><label for="name" class="block text-sm font-medium text-slate-700">Nama Produk</label><input type="text" id="name" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" required></div>
+                            <div><label for="price" class="block text-sm font-medium text-slate-700">Harga (Hanya Angka)</label><input type="number" id="price" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" required></div>
+                            <div><label for="description" class="block text-sm font-medium text-slate-700">Deskripsi</label><textarea id="description" rows="4" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" required></textarea></div>
+                            <div><label for="imageUrls" class="block text-sm font-medium text-slate-700">Link URL Gambar (pisahkan dengan koma)</label><textarea id="imageUrls" rows="3" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" placeholder="https://url-gambar1.com, https://url-gambar2.com" required></textarea></div>
+                            <div><label for="videoUrl" class="block text-sm font-medium text-slate-700">URL Video YouTube (Embed)</label><input type="url" id="videoUrl" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" placeholder="https://www.youtube.com/embed/xxxxxx"></div>
+                            <div><label for="shopeeLink" class="block text-sm font-medium text-slate-700">Link Shopee</label><input type="url" id="shopeeLink" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm"></div>
+                            <div class="pt-4 flex space-x-3"><button type="submit" id="submit-btn" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700">Simpan Produk</button><button type="button" id="cancel-edit-btn" class="w-full flex justify-center py-3 px-4 border border-slate-300 rounded-md shadow-sm text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 hidden">Batal Edit</button></div>
+                        </form>
+                        <div id="admin-product-list-container" class="bg-white p-8 rounded-lg shadow-md space-y-4">
+                            <h2 class="text-xl font-semibold border-b pb-3 text-slate-800">Daftar Produk</h2>
+                            <div id="admin-product-list" class="space-y-4"></div>
+                        </div>
+                        <form id="theme-settings-form" class="bg-white p-8 rounded-lg shadow-md space-y-6">
+                            <h2 class="text-xl font-semibold border-b pb-3 text-slate-800">Pengaturan Tema</h2>
+                            <div><label for="landing-bg-url" class="block text-sm font-medium text-slate-700">URL Background Landing Page</label><input type="url" id="landing-bg-url" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" placeholder="https://images.unsplash.com/..."></div>
+                            <div><label for="catalog-bg-color" class="block text-sm font-medium text-slate-700">Warna Background Katalog</label><input type="text" id="catalog-bg-color" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" placeholder="#f1f5f9 atau rgb(241, 245, 249)"></div>
+                            <div class="pt-4"><button type="submit" id="theme-submit-btn" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-slate-700 hover:bg-slate-800">Simpan Tema</button></div>
+                        </form>
+                        <p id="success-message" class="mt-4 text-center text-green-600 font-medium hidden">Aksi berhasil!</p>
+                    </div>
+                </main>
             </div>
         </div>
     </div>
 
     <script type="module">
-        // Import fungsi yang diperlukan dari SDK
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs, query, orderBy, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, getDocs, query, orderBy, doc, setDoc, getDoc, onSnapshot, serverTimestamp, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
         import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 
         // =============================================
@@ -138,7 +140,6 @@
         };
         const WHATSAPP_NUMBER = '6281211862924';
 
-        // Inisialisasi Firebase
         let app, db, auth;
         try {
              app = initializeApp(firebaseConfig);
@@ -149,13 +150,9 @@
             document.body.innerHTML = `<div class="h-screen w-screen flex items-center justify-center bg-red-100 text-red-700 p-4 text-center"><div><h1 class="font-bold text-lg">Error Konfigurasi</h1><p>Aplikasi gagal terhubung ke server.</p></div></div>`;
         }
 
-        // =============================================
-        // =========       LOGIKA ROUTING        =======
-        // =============================================
         function handleRouting() {
             const userAppContainer = document.getElementById('user-app');
             const adminAppContainer = document.getElementById('admin-app');
-            
             if (window.location.hash === '#admin') {
                 document.body.style.backgroundColor = '#f1f5f9';
                 userAppContainer.classList.add('hidden');
@@ -169,162 +166,213 @@
             }
         }
 
-        // =============================================
-        // =========   LOGIKA APLIKASI ADMIN     =======
-        // =============================================
         function initAdminApp() {
-            if (!auth) return; 
-            
+            if (!auth) return;
             const loginGate = document.getElementById('admin-login-gate');
             const loginForm = document.getElementById('admin-login-form');
             const adminContent = document.getElementById('admin-content');
             const adminLogoutBtn = document.getElementById('admin-logout-btn');
-
-            onAuthStateChanged(auth, user => {
-                if (user) {
-                    loginGate.classList.add('hidden');
-                    adminContent.classList.remove('hidden');
-                } else {
-                    loginGate.classList.remove('hidden');
-                    adminContent.classList.add('hidden');
-                }
-            });
-
+            onAuthStateChanged(auth, user => { user ? (loginGate.classList.add('hidden'), adminContent.classList.remove('hidden')) : (loginGate.classList.remove('hidden'), adminContent.classList.add('hidden')); });
             if (!loginForm.dataset.listenerAttached) {
                 loginForm.dataset.listenerAttached = 'true';
-                loginForm.addEventListener('submit', (e) => {
+                loginForm.addEventListener('submit', e => {
                     e.preventDefault();
-                    const loginBtn = document.getElementById('admin-login-btn');
-                    loginBtn.disabled = true;
-                    loginBtn.textContent = 'Memproses...';
-                    const email = document.getElementById('admin-email').value;
-                    const password = document.getElementById('admin-password').value;
+                    const btn = e.target.querySelector('button');
+                    btn.disabled = true;
+                    btn.textContent = 'Memproses...';
                     const errorMsg = document.getElementById('admin-login-error');
                     errorMsg.classList.add('hidden');
-
-                    signInWithEmailAndPassword(auth, email, password)
-                        .catch((error) => {
-                            console.error("Login Gagal:", error);
-                            errorMsg.classList.remove('hidden');
-                        })
-                        .finally(() => {
-                            loginBtn.disabled = false;
-                            loginBtn.textContent = 'Masuk';
-                        });
+                    signInWithEmailAndPassword(auth, loginForm['admin-email'].value, loginForm['admin-password'].value)
+                        .catch(err => { console.error(err); errorMsg.classList.remove('hidden'); })
+                        .finally(() => { btn.disabled = false; btn.textContent = 'Masuk'; });
                 });
             }
-            
             if (adminLogoutBtn && !adminLogoutBtn.dataset.listenerAttached) {
                 adminLogoutBtn.dataset.listenerAttached = 'true';
                 adminLogoutBtn.addEventListener('click', () => signOut(auth));
             }
+            
+            const productForm = document.getElementById('product-form');
+            const formTitle = document.getElementById('form-title');
+            const cancelEditBtn = document.getElementById('cancel-edit-btn');
+            const resetForm = () => { productForm.reset(); productForm['edit-product-id'].value = ''; formTitle.textContent = 'Tambah Produk Baru'; cancelEditBtn.classList.add('hidden'); };
+            cancelEditBtn.addEventListener('click', resetForm);
 
-            const addProductForm = document.getElementById('add-product-form');
-            if (addProductForm && !addProductForm.dataset.listenerAttached) {
-                addProductForm.dataset.listenerAttached = 'true';
-                addProductForm.addEventListener('submit', async (e) => {
+            if (!productForm.dataset.listenerAttached) {
+                productForm.dataset.listenerAttached = 'true';
+                productForm.addEventListener('submit', async e => {
                     e.preventDefault();
                     const submitBtn = document.getElementById('submit-btn');
-                    const successMessage = document.getElementById('success-message');
-                    const errorMessage = document.getElementById('error-message');
+                    const successMsg = document.getElementById('success-message');
                     submitBtn.disabled = true;
-                    successMessage.classList.add('hidden');
-                    errorMessage.classList.add('hidden');
-                    
-                    const imageUrlsText = addProductForm.imageUrls.value;
-                    if (!imageUrlsText) { alert("Mohon masukkan setidaknya satu link URL gambar."); submitBtn.disabled = false; return; }
-                    
+                    submitBtn.textContent = 'Menyimpan...';
+                    successMsg.classList.add('hidden');
+
+                    const productData = { name: productForm.name.value, price: parseInt(productForm.price.value), description: productForm.description.value, images: productForm.imageUrls.value.split(',').map(url => url.trim()).filter(Boolean), videoUrl: productForm.videoUrl.value, shopeeLink: productForm.shopeeLink.value, createdAt: serverTimestamp() };
                     try {
-                        submitBtn.textContent = 'Menyimpan data produk...';
-                        const imageUrls = imageUrlsText.split(',').map(url => url.trim()).filter(url => url);
-                        await addDoc(collection(db, "products"), { name: addProductForm.name.value, price: parseInt(addProductForm.price.value, 10), description: addProductForm.description.value, videoUrl: addProductForm.videoUrl.value, shopeeLink: addProductForm.shopeeLink.value, images: imageUrls, createdAt: new Date() });
-                        successMessage.classList.remove('hidden');
-                        addProductForm.reset();
-                        setTimeout(() => successMessage.classList.add('hidden'), 4000);
-                    } catch (error) {
-                        errorMessage.textContent = `Gagal menyimpan produk: ${error.message}`;
-                        errorMessage.classList.remove('hidden');
-                    } finally {
+                        const editId = productForm['edit-product-id'].value;
+                        if (editId) { await setDoc(doc(db, "products", editId), productData, { merge: true }); } 
+                        else { await addDoc(collection(db, "products"), productData); }
+                        successMsg.textContent = 'Produk berhasil disimpan!';
+                        successMsg.classList.remove('hidden');
+                        resetForm();
+                    } catch(err) { console.error("Error saving product: ", err); } 
+                    finally {
                         submitBtn.disabled = false;
                         submitBtn.textContent = 'Simpan Produk';
+                        setTimeout(() => successMsg.classList.add('hidden'), 3000);
                     }
                 });
             }
 
+            const adminProductList = document.getElementById('admin-product-list');
+            if (adminProductList && !adminProductList.dataset.listenerAttached) {
+                adminProductList.dataset.listenerAttached = 'true';
+                onSnapshot(query(collection(db, "products"), orderBy("createdAt", "desc")), snapshot => {
+                    adminProductList.innerHTML = '';
+                    snapshot.forEach(doc => {
+                        const product = { id: doc.id, ...doc.data() };
+                        const item = document.createElement('div');
+                        item.className = 'flex items-center justify-between p-3 bg-slate-50 rounded-lg';
+                        item.innerHTML = `<div><p class="font-semibold text-slate-800">${product.name}</p><p class="text-sm text-slate-500">${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(product.price)}</p></div><div class="space-x-2"><button data-id="${product.id}" class="edit-btn text-sm text-indigo-600 hover:text-indigo-800 font-medium">Edit</button><button data-id="${product.id}" class="delete-btn text-sm text-red-600 hover:text-red-800 font-medium">Hapus</button></div>`;
+                        adminProductList.appendChild(item);
+                    });
+                });
+                adminProductList.addEventListener('click', async e => {
+                    const btn = e.target; const id = btn.dataset.id; if (!id) return;
+                    if (btn.classList.contains('delete-btn')) { if (confirm('Yakin ingin menghapus produk ini?')) { await deleteDoc(doc(db, 'products', id)); } } 
+                    else if (btn.classList.contains('edit-btn')) {
+                        const docRef = doc(db, 'products', id); const docSnap = await getDoc(docRef);
+                        if (docSnap.exists()) {
+                            const data = docSnap.data(); formTitle.textContent = 'Edit Produk';
+                            productForm['edit-product-id'].value = id; productForm.name.value = data.name; productForm.price.value = data.price; productForm.description.value = data.description; productForm.imageUrls.value = data.images.join(', '); productForm.videoUrl.value = data.videoUrl || ''; productForm.shopeeLink.value = data.shopeeLink || '';
+                            cancelEditBtn.classList.remove('hidden'); productForm.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                });
+            }
+            
             const themeForm = document.getElementById('theme-settings-form');
             if(themeForm && !themeForm.dataset.listenerAttached) {
                 themeForm.dataset.listenerAttached = 'true';
-
                 const themeDocRef = doc(db, "settings", "theme");
-                getDoc(themeDocRef).then(docSnap => {
-                    if (docSnap.exists()) {
-                        document.getElementById('landing-bg-url').value = docSnap.data().landingBgUrl || '';
-                        document.getElementById('catalog-bg-color').value = docSnap.data().catalogBgColor || '';
-                    }
-                });
-
-                themeForm.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    const themeBtn = document.getElementById('theme-submit-btn');
-                    const themeSuccessMsg = document.getElementById('theme-success-message');
-                    themeBtn.disabled = true;
-                    themeBtn.textContent = 'Menyimpan...';
-                    try {
-                        const newTheme = {
-                            landingBgUrl: document.getElementById('landing-bg-url').value,
-                            catalogBgColor: document.getElementById('catalog-bg-color').value
-                        };
-                        await setDoc(themeDocRef, newTheme, { merge: true });
-                        themeSuccessMsg.classList.remove('hidden');
-                        setTimeout(() => themeSuccessMsg.classList.add('hidden'), 3000);
-                    } catch (error) {
-                        alert("Gagal menyimpan tema.");
-                    } finally {
-                        themeBtn.disabled = false;
-                        themeBtn.textContent = 'Simpan Tema';
-                    }
-                });
+                getDoc(themeDocRef).then(docSnap => { if (docSnap.exists()) { document.getElementById('landing-bg-url').value = docSnap.data().landingBgUrl || ''; document.getElementById('catalog-bg-color').value = docSnap.data().catalogBgColor || ''; } });
+                themeForm.addEventListener('submit', async e => { e.preventDefault(); const newTheme = { landingBgUrl: document.getElementById('landing-bg-url').value, catalogBgColor: document.getElementById('catalog-bg-color').value }; await setDoc(themeDocRef, newTheme, { merge: true }); const successMsg = document.getElementById('success-message'); successMsg.textContent = 'Tema berhasil disimpan!'; successMsg.classList.remove('hidden'); setTimeout(() => successMsg.classList.add('hidden'), 3000); });
             }
+            
+            const chatListAdmin = document.getElementById('chat-list-admin');
+            let currentChatListener = null;
+            onSnapshot(query(collection(db, "chats"), orderBy("lastTimestamp", "desc")), snapshot => {
+                chatListAdmin.innerHTML = '';
+                snapshot.forEach(doc => {
+                    const chat = doc.data(); const item = document.createElement('div');
+                    item.className = `p-3 rounded-md cursor-pointer hover:bg-slate-200 ${chat.unreadForAdmin ? 'bg-indigo-100 font-bold' : 'bg-slate-50'}`;
+                    item.innerHTML = `<p>${chat.userName || 'User Tanpa Nama'}</p><p class="text-xs text-slate-500 truncate">${chat.lastMessage || ''}</p>`;
+                    item.dataset.userId = doc.id; item.dataset.userName = chat.userName;
+                    chatListAdmin.appendChild(item);
+                });
+            });
+
+            chatListAdmin.addEventListener('click', e => {
+                const chatItem = e.target.closest('[data-user-id]');
+                if (chatItem) {
+                    if (currentChatListener) currentChatListener();
+                    const { userId, userName } = chatItem.dataset;
+                    const adminChatWindow = document.getElementById('admin-chat-window');
+                    adminChatWindow.classList.remove('hidden');
+                    document.getElementById('admin-chat-header').textContent = `Balas ke: ${userName}`;
+                    const messagesContainer = document.getElementById('chat-messages-admin');
+                    const replyForm = document.getElementById('admin-reply-form');
+                    currentChatListener = onSnapshot(query(collection(db, `chats/${userId}/messages`), orderBy("timestamp")), snapshot => {
+                        messagesContainer.innerHTML = '';
+                        snapshot.forEach(doc => renderMessage(doc.data(), messagesContainer, 'admin'));
+                        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                    });
+                    updateDoc(doc(db, "chats", userId), { unreadForAdmin: false });
+                    replyForm.onsubmit = async (ev) => {
+                        ev.preventDefault();
+                        const input = document.getElementById('admin-reply-input');
+                        if (input.value.trim() === '') return;
+                        await addDoc(collection(db, `chats/${userId}/messages`), { text: input.value, sender: 'admin', timestamp: serverTimestamp() });
+                        await setDoc(doc(db, "chats", userId), { lastMessage: `Admin: ${input.value}`, lastTimestamp: serverTimestamp(), unreadForUser: true }, { merge: true });
+                        input.value = '';
+                    };
+                }
+            });
         }
         
-        // =============================================
-        // =========   LOGIKA APLIKASI PENGGUNA  =======
-        // =============================================
         async function initUserApp() {
             const productListContainer = document.getElementById('product-list');
-            if (!db) { if(productListContainer) productListContainer.innerHTML = "<p class='text-center text-red-500'>Aplikasi gagal terhubung. Cek konfigurasi Firebase Anda dan refresh halaman.</p>"; return; }
-
-            try {
-                const themeDocRef = doc(db, "settings", "theme");
-                const docSnap = await getDoc(themeDocRef);
-                if (docSnap.exists()) {
-                    const theme = docSnap.data();
-                    if (theme.landingBgUrl) document.getElementById('landing-page').style.backgroundImage = `url('${theme.landingBgUrl}')`;
-                    if (theme.catalogBgColor) document.getElementById('catalog-page').style.backgroundColor = theme.catalogBgColor;
-                }
-            } catch (error) { console.warn("Gagal memuat tema kustom:", error); }
-
+            if (!db) { if(productListContainer) productListContainer.innerHTML = "<p>Gagal terhubung.</p>"; return; }
+            try { const themeDoc = await getDoc(doc(db, "settings", "theme")); if (themeDoc.exists()) { const theme = themeDoc.data(); if (theme.landingBgUrl) document.getElementById('landing-page').style.backgroundImage = `url('${theme.landingBgUrl}')`; if (theme.catalogBgColor) document.getElementById('catalog-page').style.backgroundColor = theme.catalogBgColor; } } catch (e) { console.warn("Gagal memuat tema."); }
             let products = []; let carouselStates = {};
             const landingPage = document.getElementById('landing-page'); const catalogPage = document.getElementById('catalog-page'); const loginForm = document.getElementById('login-form');
-            const fetchProducts = async () => { try { const q = query(collection(db, "products"), orderBy("createdAt", "desc")); const querySnapshot = await getDocs(q); products = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })); } catch (error) { console.error("Error fetching products: ", error); productListContainer.innerHTML = "<p class='text-center text-red-500'>Gagal memuat produk. Cek koneksi internet atau konfigurasi Firebase.</p>"; } };
-            const showCatalog = async (userName) => { document.getElementById('welcome-message').textContent = `Hai, ${userName} 😍`; landingPage.classList.add('hidden'); catalogPage.classList.remove('hidden'); if (products.length === 0) { productListContainer.innerHTML = "<p class='text-center text-slate-500'>Memuat produk...</p>"; await fetchProducts(); } renderProducts(products); };
+            const fetchProducts = async () => { try { const q = query(collection(db, "products"), orderBy("createdAt", "desc")); const querySnapshot = await getDocs(q); products = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })); } catch (e) { console.error(e); productListContainer.innerHTML = "<p>Gagal memuat produk.</p>"; } };
+            const showCatalog = async (userName) => {
+                document.getElementById('welcome-message').textContent = `Halo, ${userName}!`;
+                landingPage.classList.add('hidden');
+                catalogPage.classList.remove('hidden');
+                let userId = localStorage.getItem('monggoUserId');
+                if (!userId) { userId = crypto.randomUUID(); localStorage.setItem('monggoUserId', userId); }
+                initChatForUser(userId, userName);
+                if (products.length === 0) { productListContainer.innerHTML = "<p>Memuat produk...</p>"; await fetchProducts(); }
+                renderProducts(products);
+            };
             const showLandingPage = () => { landingPage.classList.remove('hidden'); catalogPage.classList.add('hidden'); document.getElementById('login-name').value = ''; };
-            if (!loginForm.dataset.listenerAttached) { loginForm.dataset.listenerAttached = 'true'; loginForm.addEventListener('submit', (e) => { e.preventDefault(); const userName = document.getElementById('login-name').value.trim(); if (userName) { localStorage.setItem('userName', userName); showCatalog(userName); } }); }
+            if (!loginForm.dataset.listenerAttached) { loginForm.dataset.listenerAttached = 'true'; loginForm.addEventListener('submit', e => { e.preventDefault(); const userName = document.getElementById('login-name').value.trim(); if (userName) { localStorage.setItem('userName', userName); showCatalog(userName); } }); }
             const logoutBtn = document.getElementById('logout-btn'); if (logoutBtn && !logoutBtn.dataset.listenerAttached) { logoutBtn.dataset.listenerAttached = 'true'; logoutBtn.addEventListener('click', () => { localStorage.removeItem('userName'); showLandingPage(); }); }
             const renderProducts = (productsToRender) => { productListContainer.innerHTML = ''; document.getElementById('no-results').classList.toggle('hidden', productsToRender.length > 0); productsToRender.forEach(product => { if (!carouselStates[product.id]) carouselStates[product.id] = { currentIndex: 0 }; const imagesHtml = product.images.map(img => `<div class="card-carousel-slide"><img src="${img}" alt="${product.name}" class="w-full h-64 object-cover"></div>`).join(''); const formatRupiah = (number) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(number); const productCard = `<div class="product-card bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden flex flex-col group transition-shadow duration-300 hover:shadow-xl" data-product-id="${product.id}"><div class="card-carousel-container w-full overflow-hidden"><div class="card-carousel-track" style="width: ${product.images.length * 100}%">${imagesHtml}</div>${product.images.length > 1 ? `<button class="carousel-btn left" data-direction="-1">&#10094;</button><button class="carousel-btn right" data-direction="1">&#10095;</button>` : ''}<button class="detail-btn absolute top-2 right-2 bg-black bg-opacity-40 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" title="Lihat Detail Foto"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg></button></div><div class="p-5 flex flex-col flex-grow"><h3 class="text-lg font-bold text-slate-800">${product.name}</h3><p class="text-slate-600 mt-2 text-sm flex-grow">${product.description}</p><div class="mt-4 pt-4 border-t border-slate-200"><p class="text-2xl font-extrabold text-indigo-600">${formatRupiah(product.price)}</p></div></div><div class="p-5 pt-0 mt-auto"><div class="space-y-2"><div class="grid grid-cols-2 gap-2"><button class="action-btn watch-video-btn w-full bg-slate-700 text-white font-semibold py-2 px-3 rounded-lg hover:bg-slate-800 text-sm transition-transform duration-200 hover:-translate-y-0.5">Lihat Video</button><a href="${product.shopeeLink}" target="_blank" class="action-btn w-full bg-orange-500 text-white font-semibold py-2 px-3 rounded-lg hover:bg-orange-600 flex items-center justify-center text-sm transition-transform duration-200 hover:-translate-y-0.5"><svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M19.98 10.98a2.5 2.5 0 0 0-2.22-1.48H6.24a2.5 2.5 0 0 0-2.22 1.48L3 15.5v1.5c0 .83.67 1.5 1.5 1.5h15c.83 0 1.5-.67 1.5-1.5v-1.5l-1.02-4.52zM8.5 16c-.83 0-1.5-.67-1.5-1.5S7.67 13 8.5 13s1.5.67 1.5 1.5S9.33 16 8.5 16zm7 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-7.5H7.13l.96-4.28c.1-.44.5-.72.95-.72h5.92c.45 0 .85.28.95.72l.96 4.28z"></path></svg>Shopee</a></div><button class="action-btn buy-btn w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-bold py-2.5 px-4 rounded-lg hover:from-green-600 hover:to-green-700 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">Pesan via WhatsApp</button></div></div></div>`; productListContainer.innerHTML += productCard; }); initAnimations(); };
-            document.getElementById('search-bar').addEventListener('input', (e) => { const query = e.target.value.toLowerCase(); const filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.description.toLowerCase().includes(query)); renderProducts(filtered); });
-            productListContainer.addEventListener('click', (e) => { const button = e.target.closest('button, a'); if (!button) return; const card = button.closest('.product-card'); if (!card) return; const productId = card.dataset.productId; const product = products.find(p => p.id == productId); if (button.classList.contains('carousel-btn')) { const track = card.querySelector('.card-carousel-track'); const direction = parseInt(button.dataset.direction, 10); const numImages = product.images.length; let { currentIndex } = carouselStates[productId]; currentIndex = (currentIndex + direction + numImages) % numImages; carouselStates[productId].currentIndex = currentIndex; track.style.transform = `translateX(-${(currentIndex / numImages) * 100}%)`; } else if (button.classList.contains('detail-btn')) { const { currentIndex } = carouselStates[productId]; document.getElementById('detail-image-src').src = product.images[currentIndex]; document.getElementById('image-detail-modal').classList.remove('hidden'); } else if (button.classList.contains('action-btn')) { if (button.classList.contains('watch-video-btn')) { document.getElementById('video-container').innerHTML = `<iframe src="${product.videoUrl}?autoplay=1&modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`; document.getElementById('video-modal').classList.remove('hidden'); } else if (button.classList.contains('buy-btn')) { document.getElementById('modal-product-name').textContent = product.name; document.getElementById('modal-product-price').textContent = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(product.price); document.getElementById('product-id-input').value = product.id; document.getElementById('order-form').reset(); if (localStorage.getItem('userName')) document.getElementById('customer-name').value = localStorage.getItem('userName'); document.getElementById('order-modal').classList.remove('hidden'); } } });
+            document.getElementById('search-bar').addEventListener('input', e => { const query = e.target.value.toLowerCase(); const filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.description.toLowerCase().includes(query)); renderProducts(filtered); });
+            productListContainer.addEventListener('click', e => { const button = e.target.closest('button, a'); if (!button) return; const card = button.closest('.product-card'); if (!card) return; const productId = card.dataset.productId; const product = products.find(p => p.id == productId); if (button.classList.contains('carousel-btn')) { const track = card.querySelector('.card-carousel-track'); const direction = parseInt(button.dataset.direction, 10); const numImages = product.images.length; let { currentIndex } = carouselStates[productId]; currentIndex = (currentIndex + direction + numImages) % numImages; carouselStates[productId].currentIndex = currentIndex; track.style.transform = `translateX(-${(currentIndex / numImages) * 100}%)`; } else if (button.classList.contains('detail-btn')) { const { currentIndex } = carouselStates[productId]; document.getElementById('detail-image-src').src = product.images[currentIndex]; document.getElementById('image-detail-modal').classList.remove('hidden'); } else if (button.classList.contains('action-btn')) { if (button.classList.contains('watch-video-btn')) { document.getElementById('video-container').innerHTML = `<iframe src="${product.videoUrl}?autoplay=1&modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`; document.getElementById('video-modal').classList.remove('hidden'); } else if (button.classList.contains('buy-btn')) { document.getElementById('modal-product-name').textContent = product.name; document.getElementById('modal-product-price').textContent = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(product.price); document.getElementById('product-id-input').value = product.id; document.getElementById('order-form').reset(); if (localStorage.getItem('userName')) document.getElementById('customer-name').value = localStorage.getItem('userName'); document.getElementById('order-modal').classList.remove('hidden'); } } });
             document.getElementById('order-form').addEventListener('submit', (e) => { e.preventDefault(); const productId = document.getElementById('product-id-input').value; const product = products.find(p => p.id == productId); const customerName = document.getElementById('customer-name').value; const customerAddress = document.getElementById('customer-address').value; const customerNote = document.getElementById('pesancustomer').value.trim(); let message = `Halo, saya ingin memesan:\n\n*Produk:* ${product.name}\n*Harga:* ${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(product.price)}\n\n*Nama Penerima:* ${customerName}\n*Alamat Pengiriman:* ${customerAddress}`; if (customerNote) { message += `\n*Catatan:* ${customerNote}`; } message += `\n\nTerima kasih!`; window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank'); document.getElementById('order-modal').classList.add('hidden'); });
-            document.querySelectorAll('#user-app .modal').forEach(modal => { modal.addEventListener('click', (e) => { if (e.target === modal || e.target.closest('.close-modal-btn')) modal.classList.add('hidden'); }); });
+            document.querySelectorAll('#user-app .modal').forEach(modal => { modal.addEventListener('click', e => { if (e.target === modal || e.target.closest('.close-modal-btn')) modal.classList.add('hidden'); }); });
             const initAnimations = () => { const observer = new IntersectionObserver((entries, obs) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); obs.unobserve(entry.target); } }); }, { threshold: 0.1 }); document.querySelectorAll('.product-card:not(.is-visible)').forEach(card => observer.observe(card)); };
-            
             const savedUser = localStorage.getItem('userName');
             if (savedUser) { showCatalog(savedUser); } else { showLandingPage(); }
         }
 
-        // --- INISIALISASI UTAMA ---
+        function initChatForUser(userId, userName) {
+            const chatIcon = document.getElementById('chat-icon');
+            const chatModal = document.getElementById('chat-modal');
+            const userChatForm = document.getElementById('user-chat-form');
+            const chatNotifDot = document.getElementById('chat-notification-dot');
+            if (!userId) return;
+            onSnapshot(doc(db, "chats", userId), docSnap => { if (docSnap.exists() && docSnap.data().unreadForUser && chatModal.classList.contains('hidden')) { chatNotifDot.classList.remove('hidden'); } });
+            chatIcon.addEventListener('click', () => { chatModal.classList.remove('hidden'); chatNotifDot.classList.add('hidden'); updateDoc(doc(db, "chats", userId), { unreadForUser: false }); });
+            document.querySelector('.close-chat-modal').addEventListener('click', () => chatModal.classList.add('hidden'));
+            onSnapshot(query(collection(db, `chats/${userId}/messages`), orderBy("timestamp")), snapshot => {
+                const messagesContainer = document.getElementById('chat-messages-user');
+                messagesContainer.innerHTML = '';
+                snapshot.forEach(doc => renderMessage(doc.data(), messagesContainer, 'user'));
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            });
+            if (!userChatForm.dataset.listenerAttached) {
+                userChatForm.dataset.listenerAttached = 'true';
+                userChatForm.addEventListener('submit', async e => {
+                    e.preventDefault();
+                    const input = document.getElementById('user-chat-input');
+                    if (input.value.trim() === '') return;
+                    await addDoc(collection(db, `chats/${userId}/messages`), { text: input.value, sender: 'user', timestamp: serverTimestamp() });
+                    await setDoc(doc(db, "chats", userId), { userName, lastMessage: input.value, lastTimestamp: serverTimestamp(), unreadForAdmin: true }, { merge: true });
+                    input.value = '';
+                });
+            }
+        }
+
+        function renderMessage(data, container, perspective) {
+            const bubble = document.createElement('div');
+            bubble.textContent = data.text;
+            bubble.className = 'p-3 rounded-lg max-w-[80%]';
+            if (data.sender === 'user') {
+                bubble.classList.add('chat-bubble-user', 'self-end', 'rounded-br-none');
+            } else {
+                bubble.classList.add('chat-bubble-admin', 'self-start', 'rounded-bl-none');
+            }
+            container.appendChild(bubble);
+        }
+
         window.addEventListener('hashchange', handleRouting);
-        handleRouting(); // Jalankan saat halaman pertama kali dimuat
+        handleRouting();
     </script>
 </body>
 </html>
