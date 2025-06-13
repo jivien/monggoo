@@ -3,17 +3,15 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
 import { getFirestore, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
 
-// =============================================
-// =========      KONFIGURASI UTAMA      =======
-// =============================================
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional.
-    apiKey: "AIzaSyA3GPX4JG7COQIMjIGVIgtOu_aW90pYZzY",
-    authDomain: "monggo-monggo.firebaseapp.com",
-    projectId: "2c731f30-5887-44cb-8370-70802dad4102",
-    storageBucket: "nama-proyek-anda.appspot.com",
-    messagingSenderId: "G-7H81V0Q8BQ",
-    appId: "1:179927305825:web:318a9213b98657d0366420"
+  apiKey: "AIzaSyA3GPX4JG7COQIMjIGVIgtOu_aW90pYZzY",
+  authDomain: "monggo-monggo.firebaseapp.com",
+  projectId: "monggo-monggo",
+  storageBucket: "monggo-monggo.firebasestorage.app",
+  messagingSenderId: "179927305825",
+  appId: "1:179927305825:web:318a9213b98657d0366420",
+  measurementId: "G-7H81V0Q8BQ"
 };
 const ADMIN_PASSWORD = "monggo123";
 const WHATSAPP_NUMBER = '6281211862924';
