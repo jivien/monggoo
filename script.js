@@ -7,14 +7,13 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstati
 // =========      KONFIGURASI UTAMA      =======
 // =============================================
 const firebaseConfig = {
-    // (PENTING) GANTI DENGAN KONFIGURASI FIREBASE ANDA SENDIRI.
-    // LIHAT PANDUAN UNTUK CARA MENDAPATKANNYA.
-    apiKey: "AIzaSy...",
-    authDomain: "nama-proyek-anda.firebaseapp.com",
-    projectId: "nama-proyek-anda",
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional.
+    apiKey: "AIzaSyA3GPX4JG7COQIMjIGVIgtOu_aW90pYZzY",
+    authDomain: "monggo-monggo.firebaseapp.com",
+    projectId: "2c731f30-5887-44cb-8370-70802dad4102",
     storageBucket: "nama-proyek-anda.appspot.com",
-    messagingSenderId: "...",
-    appId: "..."
+    messagingSenderId: "G-7H81V0Q8BQ",
+    appId: "1:179927305825:web:318a9213b98657d0366420"
 };
 const ADMIN_PASSWORD = "monggo123";
 const WHATSAPP_NUMBER = '6281211862924';
