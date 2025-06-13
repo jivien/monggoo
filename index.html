@@ -83,27 +83,14 @@
     <!-- ============================================= -->
     <div id="admin-app" class="hidden">
         <div class="bg-slate-100 flex items-center justify-center min-h-screen p-4">
-             <!-- (DIUBAH) KONTENER LOGIN DENGAN FIREBASE AUTH -->
+             <!-- KONTENER LOGIN DENGAN FIREBASE AUTH -->
             <div id="admin-login-gate" class="w-full max-w-md">
-                <form id="admin-login-form" class="bg-white p-8 rounded-lg shadow-md"><h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Admin Login</h2>
-                    <div class="space-y-4">
-                        <div><label for="admin-email" class="block text-sm font-medium text-slate-700">Email</label><input type="email" id="admin-email" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500" required></div>
-                        <div><label for="admin-password" class="block text-sm font-medium text-slate-700">Password</label><input type="password" id="admin-password" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500" required></div>
-                    </div>
-                    <p id="admin-login-error" class="text-red-500 text-sm text-center mt-4 hidden">Email atau Password salah.</p>
-                    <div class="mt-6"><button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700">Masuk</button></div>
-                </form>
+                <form id="admin-login-form" class="bg-white p-8 rounded-lg shadow-md"><h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Admin Login</h2><div class="space-y-4"><div><label for="admin-email" class="block text-sm font-medium text-slate-700">Email</label><input type="email" id="admin-email" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500" required></div><div><label for="admin-password" class="block text-sm font-medium text-slate-700">Password</label><input type="password" id="admin-password" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500" required></div></div><p id="admin-login-error" class="text-red-500 text-sm text-center mt-4 hidden">Email atau Password salah.</p><div class="mt-6"><button type="submit" id="admin-login-btn" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700">Masuk</button></div></form>
             </div>
 
             <!-- KONTENER FORM TAMBAH PRODUK -->
             <div id="admin-content" class="container mx-auto p-6 max-w-2xl hidden">
-                <div class="flex justify-between items-center mb-6">
-                    <div>
-                        <h1 class="text-3xl font-bold text-slate-800">Admin Panel</h1>
-                        <p id="admin-email-display" class="text-slate-600"></p>
-                    </div>
-                    <button id="admin-logout-btn" class="text-sm font-medium text-red-500 hover:text-red-700">Logout</button>
-                </div>
+                <div class="flex justify-between items-center mb-6"><h1 class="text-3xl font-bold text-slate-800">Admin Panel</h1><button id="admin-logout-btn" class="text-sm font-medium text-red-500 hover:text-red-700">Logout</button></div>
                 <form id="add-product-form" class="bg-white p-8 rounded-lg shadow-md space-y-6">
                     <div><label for="name" class="block text-sm font-medium text-slate-700">Nama Produk</label><input type="text" id="name" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" required></div>
                     <div><label for="price" class="block text-sm font-medium text-slate-700">Harga (Hanya Angka)</label><input type="number" id="price" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" required></div>
@@ -129,16 +116,17 @@
         // =============================================
         // =========      KONFIGURASI UTAMA      =======
         // =============================================
+        // (DIUBAH) KUNCI FIREBASE ASLI ANDA SUDAH DIMASUKKAN
         const firebaseConfig = {
-            // (PENTING) GANTI DENGAN KONFIGURASI FIREBASE ANDA SENDIRI.
             apiKey: "AIzaSyA3GPX4JG7COQIMjIGVIgtOu_aW90pYZzY",
             authDomain: "monggo-monggo.firebaseapp.com",
             projectId: "monggo-monggo",
-            storageBucket: "monggo-monggo.firebasestorage.app",
+            storageBucket: "monggo-monggo.appspot.com",
             messagingSenderId: "179927305825",
-            appId: "1:179927305825:web:318a9213b98657d0366420"
+            appId: "1:179927305825:web:318a9213b98657d0366420",
+            measurementId: "G-7H81V0Q8BQ"
         };
-        const WHATSAPP_NUMBER = '6281211862924';
+        const WHATSAPP_NUMBER = '6281211862924'; // Ganti nomor WhatsApp Anda jika perlu
 
         // Inisialisasi Firebase
         let app, db, storage, auth;
@@ -146,10 +134,10 @@
              app = initializeApp(firebaseConfig);
              db = getFirestore(app);
              storage = getStorage(app);
-             auth = getAuth(app); // Inisialisasi Firebase Auth
+             auth = getAuth(app);
         } catch(e) {
-            console.error("Firebase Gagal Dinisialisasi. Periksa kembali `firebaseConfig` Anda.", e);
-            document.body.innerHTML = `<div class="h-screen w-screen flex items-center justify-center bg-red-100 text-red-700 p-4 text-center"><div><h1 class="font-bold text-lg">Error Konfigurasi</h1><p>Aplikasi gagal terhubung ke server.<br>Pastikan <strong>firebaseConfig</strong> di dalam kode sudah diisi dengan benar.</p></div></div>`;
+            console.error("Firebase Gagal Dinisialisasi.", e);
+            document.body.innerHTML = `<div class="h-screen w-screen flex items-center justify-center bg-red-100 text-red-700 p-4 text-center"><div><h1 class="font-bold text-lg">Error Konfigurasi</h1><p>Aplikasi gagal terhubung ke server.</p></div></div>`;
         }
 
         // =============================================
@@ -185,12 +173,9 @@
 
             onAuthStateChanged(auth, user => {
                 if (user) {
-                    // Pengguna (admin) sudah login
                     loginGate.classList.add('hidden');
                     adminContent.classList.remove('hidden');
-                    document.getElementById('admin-email-display').textContent = `Login sebagai: ${user.email}`;
                 } else {
-                    // Tidak ada pengguna yang login
                     loginGate.classList.remove('hidden');
                     adminContent.classList.add('hidden');
                 }
@@ -200,23 +185,27 @@
                 loginForm.dataset.listenerAttached = 'true';
                 loginForm.addEventListener('submit', (e) => {
                     e.preventDefault();
+                    const loginBtn = document.getElementById('admin-login-btn');
+                    loginBtn.disabled = true;
+                    loginBtn.textContent = 'Memproses...';
                     const email = document.getElementById('admin-email').value;
                     const password = document.getElementById('admin-password').value;
                     const errorMsg = document.getElementById('admin-login-error');
                     errorMsg.classList.add('hidden');
 
                     signInWithEmailAndPassword(auth, email, password)
-                        .then((userCredential) => {
-                            // Berhasil login, onAuthStateChanged akan menangani UI
-                        })
                         .catch((error) => {
                             console.error("Login Gagal:", error);
                             errorMsg.classList.remove('hidden');
+                        })
+                        .finally(() => {
+                            loginBtn.disabled = false;
+                            loginBtn.textContent = 'Masuk';
                         });
                 });
             }
             
-            if (!adminLogoutBtn.dataset.listenerAttached) {
+            if (adminLogoutBtn && !adminLogoutBtn.dataset.listenerAttached) {
                 adminLogoutBtn.dataset.listenerAttached = 'true';
                 adminLogoutBtn.addEventListener('click', () => {
                     signOut(auth);
@@ -224,11 +213,10 @@
             }
 
             const addProductForm = document.getElementById('add-product-form');
-            if (!addProductForm.dataset.listenerAttached) {
+            if (addProductForm && !addProductForm.dataset.listenerAttached) {
                 addProductForm.dataset.listenerAttached = 'true';
                 addProductForm.addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    // ... Logika form tambah produk tetap sama ...
                     const submitBtn = document.getElementById('submit-btn');
                     const successMessage = document.getElementById('success-message');
                     const errorMessage = document.getElementById('error-message');
@@ -264,7 +252,6 @@
         // =========   LOGIKA APLIKASI PENGGUNA  =======
         // =============================================
         function initUserApp() {
-            // ... (Seluruh logika untuk aplikasi pengguna tetap sama persis seperti kode sebelumnya) ...
             const productListContainer = document.getElementById('product-list');
             if (!db) { if(productListContainer) productListContainer.innerHTML = "<p class='text-center text-red-500'>Aplikasi gagal terhubung. Cek konfigurasi Firebase Anda dan refresh halaman.</p>"; return; }
             let products = []; let carouselStates = {};
