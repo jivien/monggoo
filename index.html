@@ -18,7 +18,7 @@
         .hidden-view { display: none !important; }
 
         /* --- Cinematic Landing Page Styles --- */
-        #landing-page { background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center; }
+        #landing-page { background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCXZyAtDA5Z-cIrA3H1GAK5etCM5PSyraDC01u5beIud99Ljn8fRMT3Hs&s=10/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center; }
         .landing-overlay { background-color: rgba(10, 10, 10, 0.7); backdrop-filter: blur(4px); }
         .fade-in-up { animation: fadeInUp 1s ease-out forwards; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -54,7 +54,7 @@
             <div class="landing-overlay absolute inset-0"></div>
             <div class="relative z-10 text-center p-4 max-w-lg">
                 <h1 class="orbitron text-5xl md:text-6xl font-bold text-white tracking-wider fade-in-up" style="animation-delay: 0.1s;">Monggo</h1>
-                <p class="mt-4 text-lg md:text-xl text-gray-300 fade-in-up" style="animation-delay: 0.3s;">Temukan gayamu di alam bebas.</p>
+                <p class="mt-4 text-lg md:text-xl text-gray-300 fade-in-up" style="animation-delay: 0.3s;">Temukan gayamu di alam bebas di sini</p>
                 <form id="login-form" class="mt-8 fade-in-up" style="animation-delay: 0.5s;">
                     <input type="text" id="login-name" placeholder="Masukkan nama Anda..." class="input-tech w-full px-4 py-3 rounded-md text-center text-white placeholder-gray-400 focus:outline-none" required>
                     <button type="submit" class="mt-4 w-full bg-indigo-600 text-white font-bold py-3 px-4 rounded-md hover:bg-indigo-500 hover:shadow-lg hover:shadow-indigo-500/50 transition-all duration-300">Jelajahi Katalog</button>
@@ -63,10 +63,10 @@
         </section>
 
         <!-- HALAMAN KATALOG PRODUK -->
-        <section id="catalog-page" class="hidden bg-slate-100 text-slate-800">
+        <sectiion id="catalog-page" class="hidden bg-slate-100 text-slate-800">
             <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-40"><div class="container mx-auto px-6 py-4 flex justify-between items-center"><h1 class="orbitron text-3xl font-bold text-indigo-600">Monggo</h1><div id="auth-section"><div id="user-info" class="flex items-center space-x-4"><span id="welcome-message" class="text-slate-700 font-medium"></span><button id="logout-btn" class="text-sm text-red-500 hover:underline">Logout</button></div></div></div></header>
             <main class="container mx-auto px-6 py-10"><div class="mb-10 max-w-2xl mx-auto"><div class="relative"><div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none"><svg class="h-5 w-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg></div><input type="search" id="search-bar" placeholder="Cari kemeja, sepatu, dll..." class="block w-full pl-12 pr-4 py-3 border border-slate-300 rounded-full bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg shadow-sm"></div></div><div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div><p id="no-results" class="text-center text-slate-500 text-lg hidden mt-8">Yah, produk yang kamu cari tidak ditemukan.</p></main>
-            <footer class="bg-white mt-12 py-6 border-t border-slate-200"><div class="container mx-auto px-6 text-center text-slate-500 text-sm"><p>&copy; 2024 Monggo. All Rights Reserved.</p></div></footer>
+            <footer class="bg-white mt-12 py-6 border-t border-slate-200"><div class="container mx-auto px-6 text-center text-slate-500 text-sm"><p>&copy; 2025 Monggo | © J I S A E S H I N.</p></div></footer>
             <a href="#admin" id="admin-icon-link" title="Admin Panel" class="fixed bottom-6 right-6 bg-slate-800 text-white p-3 rounded-full shadow-lg hover:bg-indigo-600 transition-all duration-300 transform hover:scale-110 z-50">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
             </a>
@@ -95,7 +95,8 @@
                     <div><label for="name" class="block text-sm font-medium text-slate-700">Nama Produk</label><input type="text" id="name" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" required></div>
                     <div><label for="price" class="block text-sm font-medium text-slate-700">Harga (Hanya Angka)</label><input type="number" id="price" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" required></div>
                     <div><label for="description" class="block text-sm font-medium text-slate-700">Deskripsi</label><textarea id="description" rows="4" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" required></textarea></div>
-                    <div><label for="images" class="block text-sm font-medium text-slate-700">Upload Gambar Produk</label><input type="file" id="images" multiple accept="image/png, image/jpeg, image/webp" class="mt-1 block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100" required><p class="text-xs text-slate-500 mt-1">Anda bisa memilih lebih dari satu gambar.</p></div>
+                    <!-- Input untuk link URL gambar -->
+                    <div><label for="imageUrls" class="block text-sm font-medium text-slate-700">Link URL Gambar (pisahkan dengan koma)</label><textarea id="imageUrls" rows="3" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" placeholder="https://url-gambar1.com, https://url-gambar2.com" required></textarea></div>
                     <div><label for="videoUrl" class="block text-sm font-medium text-slate-700">URL Video YouTube (Embed)</label><input type="url" id="videoUrl" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm" placeholder="https://www.youtube.com/embed/xxxxxx"></div>
                     <div><label for="shopeeLink" class="block text-sm font-medium text-slate-700">Link Shopee</label><input type="url" id="shopeeLink" class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm"></div>
                     <div class="pt-4"><button type="submit" id="submit-btn" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700">Simpan Produk</button></div>
@@ -110,13 +111,11 @@
         // Import fungsi yang diperlukan dari SDK
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
-        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
         import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 
         // =============================================
         // =========      KONFIGURASI UTAMA      =======
         // =============================================
-        // (DIUBAH) KUNCI FIREBASE ASLI ANDA SUDAH DIMASUKKAN
         const firebaseConfig = {
             apiKey: "AIzaSyA3GPX4JG7COQIMjIGVIgtOu_aW90pYZzY",
             authDomain: "monggo-monggo.firebaseapp.com",
@@ -126,14 +125,13 @@
             appId: "1:179927305825:web:318a9213b98657d0366420",
             measurementId: "G-7H81V0Q8BQ"
         };
-        const WHATSAPP_NUMBER = '6281211862924'; // Ganti nomor WhatsApp Anda jika perlu
+        const WHATSAPP_NUMBER = '6281211862924';
 
         // Inisialisasi Firebase
-        let app, db, storage, auth;
+        let app, db, auth;
         try {
              app = initializeApp(firebaseConfig);
              db = getFirestore(app);
-             storage = getStorage(app);
              auth = getAuth(app);
         } catch(e) {
             console.error("Firebase Gagal Dinisialisasi.", e);
@@ -223,17 +221,28 @@
                     submitBtn.disabled = true;
                     successMessage.classList.add('hidden');
                     errorMessage.classList.add('hidden');
-                    const imageFiles = addProductForm.images.files;
-                    if (imageFiles.length === 0) { alert("Mohon pilih setidaknya satu gambar produk."); submitBtn.disabled = false; return; }
+                    
+                    const imageUrlsText = addProductForm.imageUrls.value;
+                    if (!imageUrlsText) {
+                        alert("Mohon masukkan setidaknya satu link URL gambar.");
+                        submitBtn.disabled = false;
+                        return;
+                    }
+                    
                     try {
-                        submitBtn.textContent = `Mengunggah ${imageFiles.length} gambar...`;
-                        const uploadTasks = Array.from(imageFiles).map(file => { const fileName = `products/${Date.now()}-${file.name}`; const storageRef = ref(storage, fileName); return uploadBytes(storageRef, file); });
-                        const uploadResults = await Promise.all(uploadTasks);
-                        submitBtn.textContent = 'Mendapatkan URL gambar...';
-                        const urlTasks = uploadResults.map(snapshot => getDownloadURL(snapshot.ref));
-                        const imageUrls = await Promise.all(urlTasks);
                         submitBtn.textContent = 'Menyimpan data produk...';
-                        await addDoc(collection(db, "products"), { name: addProductForm.name.value, price: parseInt(addProductForm.price.value, 10), description: addProductForm.description.value, videoUrl: addProductForm.videoUrl.value, shopeeLink: addProductForm.shopeeLink.value, images: imageUrls, createdAt: new Date() });
+                        const imageUrls = imageUrlsText.split(',').map(url => url.trim()).filter(url => url);
+
+                        await addDoc(collection(db, "products"), {
+                            name: addProductForm.name.value,
+                            price: parseInt(addProductForm.price.value, 10),
+                            description: addProductForm.description.value,
+                            videoUrl: addProductForm.videoUrl.value,
+                            shopeeLink: addProductForm.shopeeLink.value,
+                            images: imageUrls,
+                            createdAt: new Date()
+                        });
+                        
                         successMessage.classList.remove('hidden');
                         addProductForm.reset();
                         setTimeout(() => successMessage.classList.add('hidden'), 4000);
@@ -257,7 +266,7 @@
             let products = []; let carouselStates = {};
             const landingPage = document.getElementById('landing-page'); const catalogPage = document.getElementById('catalog-page'); const loginForm = document.getElementById('login-form');
             const fetchProducts = async () => { try { const q = query(collection(db, "products"), orderBy("createdAt", "desc")); const querySnapshot = await getDocs(q); products = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })); } catch (error) { console.error("Error fetching products: ", error); productListContainer.innerHTML = "<p class='text-center text-red-500'>Gagal memuat produk. Cek koneksi internet atau konfigurasi Firebase.</p>"; } };
-            const showCatalog = async (userName) => { document.getElementById('welcome-message').textContent = `Halo, ${userName}!`; landingPage.classList.add('hidden'); catalogPage.classList.remove('hidden'); if (products.length === 0) { productListContainer.innerHTML = "<p class='text-center text-slate-500'>Memuat produk...</p>"; await fetchProducts(); } renderProducts(products); };
+            const showCatalog = async (userName) => { document.getElementById('welcome-message').textContent = `Hai, ${userName} 🔥`; landingPage.classList.add('hidden'); catalogPage.classList.remove('hidden'); if (products.length === 0) { productListContainer.innerHTML = "<p class='text-center text-slate-500'>Memuat produk...</p>"; await fetchProducts(); } renderProducts(products); };
             const showLandingPage = () => { landingPage.classList.remove('hidden'); catalogPage.classList.add('hidden'); document.getElementById('login-name').value = ''; };
             if (!loginForm.dataset.listenerAttached) { loginForm.dataset.listenerAttached = 'true'; loginForm.addEventListener('submit', (e) => { e.preventDefault(); const userName = document.getElementById('login-name').value.trim(); if (userName) { localStorage.setItem('userName', userName); showCatalog(userName); } }); }
             const logoutBtn = document.getElementById('logout-btn'); if (logoutBtn && !logoutBtn.dataset.listenerAttached) { logoutBtn.dataset.listenerAttached = 'true'; logoutBtn.addEventListener('click', () => { localStorage.removeItem('userName'); showLandingPage(); }); }
